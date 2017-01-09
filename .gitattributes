@@ -1,0 +1,12 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# That makes always CRLF on Windows, so should not need to declare
+# files that we want to always have CRLF line endings, e.g. 
+# *.sln text eol=crlf
+
+# If needed could also explicitly list a file/type as binary
+# if for some reason Git is considering it to be a text file type,
+# so they won't have CRLF->LF modified
+#*.png binary
+#*.jpg binary

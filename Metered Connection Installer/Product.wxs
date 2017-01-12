@@ -34,6 +34,8 @@
     <UIRef Id="WixUI_Minimal"/>
     <WixVariable Id="WixUILicenseRtf"
                  Value="Resources\License.rtf" />
+    <WixVariable Id="WixUIDialogBmp"
+                 Value="Resources\dialog.bmp"/>
 
     <ComponentGroup Id="ProductComponents"
                     Directory="INSTALLFOLDER">

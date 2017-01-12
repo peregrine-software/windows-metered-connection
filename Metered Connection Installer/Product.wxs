@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Name="Metered Connection Scheduler"
+           Language="1033"
+           Version="0.1.0.1"
+           Manufacturer="Peregrine Software"
+           UpgradeCode="ff5ca32d-5477-4ced-9f83-19f0d7d23454">
+    <Package InstallerVersion="200"
+             Compressed="yes"
+             InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
+
+    <Feature Id="ProductFeature"
+             Title="Metered Connection Scheduler"
+             Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR"
+               Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER"
+                   Name="Metered Connection Scheduler" />
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents"
+                    Directory="INSTALLFOLDER">
+       <Component Id="Component_MC_Service">
+         <File Id="File_MC_Service"
+               Source="$(var.Metered Connection Scheduler.TargetPath)"
+               Name="Metered Connection Scheduler.exe"
+               KeyPath="yes">
+         </File>
+         <ServiceInstall Id="ServiceInstaller"
+                         Type="ownProcess"
+                         Vital="yes"
+                         Name="MeteredConnection"
+                         DisplayName="Metered Connection Scheduler"
+                         Description="Lets you set up times to turn the Windows metered connection setting on and off"
+                         Start="auto"
+                         Account="LocalSystem"
+                         ErrorControl="normal"
+                         Interactive="no" />
+         <ServiceControl Id="StartService"
+                         Start="install"
+                         Stop="both"
+                         Remove="uninstall"
+                         Name="MeteredConnection"
+                         Wait="yes" />
+       </Component> 
+    </ComponentGroup>
+  </Fragment>
+</Wix>

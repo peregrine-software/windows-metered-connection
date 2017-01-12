@@ -11,7 +11,7 @@
              InstallScope="perMachine" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-    <MediaTemplate />
+    <MediaTemplate EmbedCab="yes" />
 
     <Feature Id="ProductFeature"
              Title="Metered Connection Scheduler"
@@ -31,6 +31,10 @@
   </Fragment>
 
   <Fragment>
+    <UIRef Id="WixUI_Minimal"/>
+    <WixVariable Id="WixUILicenseRtf"
+                 Value="Resources\License.rtf" />
+
     <ComponentGroup Id="ProductComponents"
                     Directory="INSTALLFOLDER">
        <Component Id="Component_MC_Service">
@@ -55,6 +59,9 @@
                          Remove="uninstall"
                          Name="MeteredConnection"
                          Wait="yes" />
+         <File Id="File_MC_License"
+               Source="Resources\License.rtf"
+               Name="License.rtf"/>
        </Component> 
     </ComponentGroup>
   </Fragment>

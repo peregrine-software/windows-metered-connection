@@ -4,10 +4,12 @@
 #include "stdafx.h"
 #include "MeteredConnectionService.h"
 
-TCHAR serviceName[] = _T("Metered Connection Scheduler");
+
+const TCHAR* serviceName = _T("Metered Connection Scheduler");
+
 
 DWORD WINAPI ServiceControlHandlerEx(DWORD control, DWORD eventType, void *eventData, void *context);
-void ServiceMain(DWORD argc, LPTSTR *argv);
+void WINAPI ServiceMain(DWORD argc, LPTSTR *argv);
 
 std::unique_ptr<MeteredConnectionService> g_pMeteredConnectionService;
 
@@ -16,14 +18,15 @@ int __cdecl _tmain(int argc, TCHAR *argv[])
 {
     const int serviceCount = 1;
     const int entryCountIncludingNullTerminator = serviceCount + 1;
-    
+    TCHAR* nameIgnoredDueToOwnProcessServiceType = _T("");
+
     SERVICE_TABLE_ENTRY serviceTable[entryCountIncludingNullTerminator] = {};
-    serviceTable[0].lpServiceName = serviceName;
-    serviceTable[0].lpServiceProc = reinterpret_cast<LPSERVICE_MAIN_FUNCTION>(ServiceMain);
+    serviceTable[0].lpServiceName = nameIgnoredDueToOwnProcessServiceType;
+    serviceTable[0].lpServiceProc = ServiceMain;
 
     ::OutputDebugString(L"Metered Connection - StartServiceCtrlDispatcher");
 
-    const BOOL started = StartServiceCtrlDispatcher(serviceTable);
+    const BOOL started = StartServiceCtrlDispatcher(&serviceTable[0]);
     ::OutputDebugString(L"Metered Connection - Service all done");
     if (started == FALSE)
     {
@@ -38,7 +41,7 @@ int __cdecl _tmain(int argc, TCHAR *argv[])
     }
 }
 
-void ServiceMain(DWORD argc, LPTSTR *argv) {
+void WINAPI ServiceMain(DWORD argc, LPTSTR *argv) {
     SERVICE_STATUS_HANDLE statusHandle = RegisterServiceCtrlHandlerEx(serviceName, &ServiceControlHandlerEx, NULL);
     if (statusHandle != 0)
     {

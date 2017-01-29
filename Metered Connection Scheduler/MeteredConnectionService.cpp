@@ -36,7 +36,7 @@ SERVICE_STATUS MeteredConnectionService::GetInitialServiceStatus()
     SERVICE_STATUS serviceStatus = {};
     serviceStatus.dwCurrentState = SERVICE_START_PENDING;
     serviceStatus.dwServiceType = SERVICE_WIN32_OWN_PROCESS;
-    serviceStatus.dwControlsAccepted = constants::AcceptedControls; // OK to accept because init is fast
+    serviceStatus.dwControlsAccepted = constants::AcceptedControls;
     serviceStatus.dwWin32ExitCode = NO_ERROR;
     serviceStatus.dwCheckPoint = 0;
     serviceStatus.dwWaitHint = 0;

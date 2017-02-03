@@ -43,7 +43,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Metered Connection Scheduler.rc">
+    <ResourceCompile Include="Service.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>

@@ -10,7 +10,7 @@
 
 #define WIN32_LEAN_AND_MEAN
 
-#include "targetver.h" // TODO target Win 8.1
+#include "targetver.h"
 
 #include <Windows.h>
 

@@ -11,7 +11,7 @@ const TCHAR* serviceName = _T("Metered Connection Scheduler");
 DWORD WINAPI ServiceControlHandlerEx(DWORD control, DWORD eventType, void *eventData, void *context);
 void WINAPI ServiceMain(DWORD argc, LPTSTR *argv);
 
-std::unique_ptr<MeteredConnectionService> g_pMeteredConnectionService;
+std::unique_ptr<MeteredConnection::MeteredConnectionService> g_pMeteredConnectionService;
 
 
 int __cdecl _tmain(int argc, TCHAR *argv[])
@@ -45,7 +45,7 @@ void WINAPI ServiceMain(DWORD argc, LPTSTR *argv) {
     SERVICE_STATUS_HANDLE statusHandle = RegisterServiceCtrlHandlerEx(serviceName, &ServiceControlHandlerEx, NULL);
     if (statusHandle != 0)
     {
-        g_pMeteredConnectionService = std::make_unique<MeteredConnectionService>(statusHandle);
+        g_pMeteredConnectionService = std::make_unique<MeteredConnection::MeteredConnectionService>(statusHandle);
     }
 }
 

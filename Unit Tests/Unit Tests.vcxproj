@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Metered Connection;..\dependencies\catch-1.7.0;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Metered Connection;..\dependencies\catch-1.7.0;..\dependencies</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,7 +132,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Metered Connection;..\dependencies\catch-1.7.0;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Metered Connection;..\dependencies\catch-1.7.0;..\dependencies</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -178,9 +178,11 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PlatformTest.cpp" />
     <ClCompile Include="TempExampleTest.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="UtilTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Metered Connection\Metered Connection.vcxproj">

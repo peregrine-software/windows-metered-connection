@@ -25,8 +25,8 @@
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Metered Connection Scheduler\Metered Connection Scheduler.vcxproj">
-      <Name>Metered Connection Scheduler</Name>
+    <ProjectReference Include="..\Service\Service.vcxproj">
+      <Name>Service</Name>
       <Project>{7f1776ec-c748-4151-a9ad-6d5e2357d870}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>

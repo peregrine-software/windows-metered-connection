@@ -41,7 +41,7 @@
                     Directory="INSTALLFOLDER">
        <Component Id="Component_MC_Service">
          <File Id="File_MC_Service"
-               Source="$(var.Metered Connection Scheduler.TargetPath)"
+               Source="$(var.Service.TargetPath)"
                Name="Metered Connection Scheduler.exe"
                KeyPath="yes">
          </File>
